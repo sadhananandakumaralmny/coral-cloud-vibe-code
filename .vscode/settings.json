@@ -1,0 +1,20 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sfdx": true
+  },
+  "codeBuilder.showWelcomePage": false,
+  "salesforce.einsteinForDevelopers.advanced": {
+    "enableAgenticChat":true,
+    "internalDevMMS": true, // deprecated, use setting below instead but you can leave it in
+    "internalModelPicker": true,
+    "salesforce.einsteinForDevelopers.enableDebugLogging": true,
+    "codeAnalyzer.enableV5": true,
+    "trace": {
+        "request": true,
+        "response": true
+    }
+  },
+  
+}

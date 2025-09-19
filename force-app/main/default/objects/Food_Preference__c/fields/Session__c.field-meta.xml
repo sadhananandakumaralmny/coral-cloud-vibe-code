@@ -1,0 +1,9 @@
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Session__c</fullName>
+    <label>Session</label>
+    <type>Lookup</type>
+    <referenceTo>Session__c</referenceTo>
+    <relationshipName>Food_Preferences</relationshipName>
+    <relationshipLabel>Food Preferences</relationshipLabel>
+    <required>false</required>
+</CustomField>

@@ -1,0 +1,44 @@
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Food_Preference__c</fullName>
+    <label>Food Preference</label>
+    <pluralLabel>Food Preferences</pluralLabel>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <sharingModel>ReadWrite</sharingModel>
+    <nameField>
+        <label>Food Preference Name</label>
+        <type>AutoNumber</type>
+        <displayFormat>FP-{0000}</displayFormat>
+    </nameField>
+<fields>
+<fullName>Guest__c</fullName>
+<label>Guest</label>
+<type>Lookup</type>
+<referenceTo>Contact</referenceTo>
+<relationshipName>GuestPreferences</relationshipName>
+<required>false</required>
+</fields>
+<fields>
+<fullName>Session__c</fullName>
+<label>Session</label>
+<type>Lookup</type>
+<referenceTo>Session__c</referenceTo>
+<relationshipName>SessionPreferences</relationshipName>
+<required>false</required>
+</fields>
+<fields>
+<fullName>Notes__c</fullName>
+<label>Notes</label>
+<type>LongTextArea</type>
+<length>32000</length>
+<required>false</required>
+<visibleLines>5</visibleLines>
+</fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <label>Notes</label>
+        <type>LongTextArea</type>
+        <length>32000</length>
+        <required>false</required>
+        <visibleLines>3</visibleLines>
+    </fields>
+</CustomObject>

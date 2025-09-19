@@ -1,0 +1,9 @@
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Guest__c</fullName>
+    <label>Guest</label>
+    <type>Lookup</type>
+    <referenceTo>Contact</referenceTo>
+    <relationshipName>Food_Preferences</relationshipName>
+    <relationshipLabel>Food Preferences</relationshipLabel>
+    <required>false</required>
+</CustomField>
