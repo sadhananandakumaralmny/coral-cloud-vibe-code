@@ -15,6 +15,7 @@
         "request": true,
         "response": true
     }
-  },
+  },,
+  "salesforce.einsteinForDevelopers.enable": true
   
 }
