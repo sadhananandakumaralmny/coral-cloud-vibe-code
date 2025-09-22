@@ -1,0 +1,5 @@
+<apexClass xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FoodPreferenceControllerTest</fullName>
+    <apiVersion>58.0</apiVersion>
+    <status>Active</status>
+</apexClass>
