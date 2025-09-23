@@ -6,16 +6,8 @@
   },
   "codeBuilder.showWelcomePage": false,
   "salesforce.einsteinForDevelopers.advanced": {
-    "enableAgenticChat":true,
-    "internalDevMMS": true, // deprecated, use setting below instead but you can leave it in
-    "internalModelPicker": true,
-    "salesforce.einsteinForDevelopers.enableDebugLogging": true,
-    "codeAnalyzer.enableV5": true,
-    "trace": {
-        "request": true,
-        "response": true
-    }
-  },,
+    "enableAgenticChat":true
+  },
   "salesforce.einsteinForDevelopers.enable": true
   
 }
