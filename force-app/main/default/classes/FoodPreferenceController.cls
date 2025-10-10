@@ -1,7 +1,9 @@
 public with sharing class FoodPreferenceController {
     @AuraEnabled(cacheable=true)
     public static List<Food_Preference__c> getFoodPreferences() {
-        return [SELECT Id, Food_Preference__c, Notes__c FROM Food_Preference__c];
+        return [SELECT Id, Food_Preference__c, Notes__c, Session__c, Session__r.Name, Guest__c, Guest__r.Name, CreatedDate 
+                FROM Food_Preference__c 
+                ORDER BY CreatedDate DESC];
     }
 
     @AuraEnabled

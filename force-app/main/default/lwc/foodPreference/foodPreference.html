@@ -1,22 +1,82 @@
 <template>
     <lightning-card title="Food Preferences" icon-name="custom:custom63">
         <div class="slds-p-around_medium">
-            <lightning-record-picker
-                label="Guest"
-                placeholder="Search Contacts..."
-                object-api-name="Contact"
-                onchange={handleGuestChange}
-            ></lightning-record-picker>
-            <lightning-record-picker
-                label="Session"
-                placeholder="Search Sessions..."
-                object-api-name="Session__c"
-                onchange={handleSessionChange}
-            ></lightning-record-picker>
-            <lightning-input class="slds-m-top_x-small" label="Food Preference" value={foodPreference} onchange={handleFoodPreferenceChange} required></lightning-input>
-            <lightning-textarea class="slds-m-top_x-small" label="Notes" value={notes} onchange={handleNotesChange}></lightning-textarea>
-            <lightning-button class="slds-m-top_medium" variant="brand" type="submit" label="Save Preference" onclick={handleSubmit}></lightning-button>
+            <!-- Form Section -->
+            <div class="slds-m-bottom_large">
+                <h3 class="slds-text-heading_small slds-m-bottom_medium">Add New Food Preference</h3>
+                <lightning-record-picker
+                    label="Guest"
+                    placeholder="Search Contacts..."
+                    object-api-name="Contact"
+                    onchange={handleGuestChange}
+                ></lightning-record-picker>
+                <lightning-record-picker
+                    label="Session"
+                    placeholder="Search Sessions..."
+                    object-api-name="Session__c"
+                    onchange={handleSessionChange}
+                ></lightning-record-picker>
+                <lightning-input class="slds-m-top_x-small" label="Food Preference" value={foodPreference} onchange={handleFoodPreferenceChange} required></lightning-input>
+                <lightning-textarea class="slds-m-top_x-small" label="Notes" value={notes} onchange={handleNotesChange}></lightning-textarea>
+                <lightning-button class="slds-m-top_medium" variant="brand" type="submit" label="Save Preference" onclick={handleSubmit}></lightning-button>
+            </div>
+
+            <!-- Table Section -->
+            <template if:true={hasData}>
+                <div class="slds-m-top_large">
+                    <h3 class="slds-text-heading_small slds-m-bottom_medium">All Food Preference Requests</h3>
+                    <div class="slds-scrollable_x">
+                        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                            <thead>
+                                <tr class="slds-line-height_reset">
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Session ID">Session ID</div>
+                                    </th>
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Session Name">Session Name</div>
+                                    </th>
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Guest Name">Guest Name</div>
+                                    </th>
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Food Preference">Food Preference</div>
+                                    </th>
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Notes">Notes</div>
+                                    </th>
+                                    <th class="slds-text-title_caps" scope="col">
+                                        <div class="slds-truncate" title="Created Date">Created Date</div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template for:each={foodPreferences} for:item="preference">
+                                    <tr key={preference.Id} class="slds-hint-parent">
+                                        <td data-label="Session ID">
+                                            <div class="slds-truncate" title={preference.Session__c}>{preference.Session__c}</div>
+                                        </td>
+                                        <td data-label="Session Name">
+                                            <div class="slds-truncate" title={preference.Session__r.Name}>{preference.Session__r.Name}</div>
+                                        </td>
+                                        <td data-label="Guest Name">
+                                            <div class="slds-truncate" title={preference.Guest__r.Name}>{preference.Guest__r.Name}</div>
+                                        </td>
+                                        <td data-label="Food Preference">
+                                            <div class="slds-truncate" title={preference.Food_Preference__c}>{preference.Food_Preference__c}</div>
+                                        </td>
+                                        <td data-label="Notes">
+                                            <div class="slds-truncate" title={preference.Notes__c}>{preference.Notes__c}</div>
+                                        </td>
+                                        <td data-label="Created Date">
+                                            <div class="slds-truncate" title={preference.CreatedDate}>{preference.CreatedDate}</div>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </template>
         </div>
-        
     </lightning-card>
 </template>

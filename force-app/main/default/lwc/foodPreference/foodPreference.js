@@ -1,5 +1,6 @@
 import { LightningElement, track, wire } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { refreshApex } from '@salesforce/apex';
 import getFoodPreferences from '@salesforce/apex/FoodPreferenceController.getFoodPreferences';
 import saveFoodPreference from '@salesforce/apex/FoodPreferenceController.saveFoodPreference';
 
@@ -8,15 +9,22 @@ export default class FoodPreference extends LightningElement {
     @track selectedSession;
     @track foodPreference;
     @track notes;
-    @track foodPreferences = [];
+    foodPreferences;
+    wiredFoodPreferencesResult;
 
     @wire(getFoodPreferences)
-    wiredFoodPreferences({ error, data }) {
-        if (data) {
-            this.foodPreferences = data;
-        } else if (error) {
-            console.error(error);
+    wiredFoodPreferences(result) {
+        this.wiredFoodPreferencesResult = result;
+        if (result.data) {
+            this.foodPreferences = result.data;
+        } else if (result.error) {
+            console.error(result.error);
+            this.foodPreferences = undefined;
         }
+    }
+
+    get hasData() {
+        return this.foodPreferences && this.foodPreferences.length > 0;
     }
 
     handleGuestChange(event) {
@@ -51,10 +59,8 @@ export default class FoodPreference extends LightningElement {
                     })
                 );
                 this.clearForm();
-                return getFoodPreferences();
-            })
-            .then(data => {
-                this.foodPreferences = data;
+                // Refresh the wire service data using the wired result
+                return refreshApex(this.wiredFoodPreferencesResult);
             })
             .catch(error => {
                 this.dispatchEvent(
